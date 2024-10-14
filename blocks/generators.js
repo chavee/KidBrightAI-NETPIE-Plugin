@@ -139,7 +139,7 @@ python.pythonGenerator.forBlock['netpie_msg_payload'] = function(block, generato
   let code;
   switch (datatype) {
     case 'string' :
-            code = `payload.decode('utf-8')`;
+            code = `str(payload)`;
             break;
     case 'int' :
             code = `int(payload)`;
@@ -237,7 +237,7 @@ python.pythonGenerator.forBlock['netpie_private_msg_payload'] = function(block, 
   let code;
   switch (datatype) {
     case 'string' :
-            code = `payload.decode('utf-8')`;
+            code = `str(payload)`;
             break;
     case 'int' :
             code = `int(payload)`;
@@ -247,6 +247,14 @@ python.pythonGenerator.forBlock['netpie_private_msg_payload'] = function(block, 
             break;
   }
   return [code, python.Order.NONE]; 
+};
+
+python.pythonGenerator.forBlock['netpie_push'] = function(block, generator) {
+    globalCodeDeclaration(block, generator);
+
+    let payload = generator.valueToCode(block, 'payload', python.Order.ATOMIC) || '';
+    let code = `microgear.publish('@push',${payload})\n`
+    return code;
 };
 
 python.pythonGenerator.forBlock['netpie_text'] = function(block, generator) {

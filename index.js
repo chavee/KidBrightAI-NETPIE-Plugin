@@ -142,6 +142,17 @@ export default {
          },
          {
              xml: `
+                 <block type="netpie_push">
+                     <value name="payload">
+                         <shadow type="text">
+                             <field name="TEXT">alert from your KidBright</field>
+                         </shadow>
+                     </value> 
+                 </block>
+             `
+         },
+         {
+             xml: `
                  <block type="netpie_text">
                      <value name="value">
                      </value>
