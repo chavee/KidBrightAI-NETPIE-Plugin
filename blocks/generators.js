@@ -252,8 +252,12 @@ python.pythonGenerator.forBlock['netpie_private_msg_payload'] = function(block, 
 python.pythonGenerator.forBlock['netpie_push'] = function(block, generator) {
     globalCodeDeclaration(block, generator);
 
-    let payload = generator.valueToCode(block, 'payload', python.Order.ATOMIC) || '';
-    let code = `microgear.publish('@push',${payload})\n`
+    let title = block.getFieldValue('title');
+    let body = generator.valueToCode(block, 'body', python.Order.ATOMIC) || '';
+
+    let code = `microgear.push('${title}', ${body})\n`
+
+    // let code = `microgear.publish('@push', '{ "topic":"${}"   }')\n`
     return code;
 };
 

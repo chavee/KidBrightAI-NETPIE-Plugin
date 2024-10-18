@@ -342,11 +342,16 @@ Blockly.defineBlocksWithJsonArray(
 
   {
     "type": "netpie_push",
-    "message0": "Mobile @push with payload: %1",
+    "message0": "Mobile @push with title %1 and body: %2",
     "args0": [
       {
+        "type": "field_input",
+        "name": "title",
+        "text": "KidBright Alert"
+      },
+      {
         "type": "input_value",
-        "name": "payload",
+        "name": "body",
         "check": [
           "Boolean",
           "Number",
@@ -354,6 +359,9 @@ Blockly.defineBlocksWithJsonArray(
         ],
         "align": "RIGHT"
       }
+
+
+
     ],
     "inputsInline": true,
     "previousStatement": null,

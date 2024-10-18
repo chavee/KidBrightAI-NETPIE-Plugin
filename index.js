@@ -3,7 +3,7 @@ export default {
     description: "Connect device to NETPIE IoT platform",
     category: "Communication",
     author: "Chavee Issariyapat",
-    version: "1.0.5",
+    version: "1.0.6",
     icon: "/static/icon.png",
     color: "#4A7CCC",
     blocks: [
@@ -38,11 +38,6 @@ export default {
          {
              xml: `
                  <block type="netpie_publish">
-                     <value name="topic">
-                         <shadow type="text">
-                             <field name="TEXT"></field>
-                         </shadow>
-                     </value>
                      <value name="payload">
                          <shadow type="text">
                              <field name="TEXT">ON</field>
@@ -91,7 +86,11 @@ export default {
                              <field name="TEXT">home.bedroom.temp</field>
                          </shadow>
                      </value>
- 
+                     <value name="value">
+                         <shadow type="math_number">
+                             <field name="NUM">24.5</field>
+                         </shadow>
+                     </value> 
                  </block>
              `
          },
@@ -143,9 +142,9 @@ export default {
          {
              xml: `
                  <block type="netpie_push">
-                     <value name="payload">
+                     <value name="body">
                          <shadow type="text">
-                             <field name="TEXT">alert from your KidBright</field>
+                             <field name="TEXT">Light ON</field>
                          </shadow>
                      </value> 
                  </block>

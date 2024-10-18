@@ -120,6 +120,16 @@ class Microgear:
         if self.mqtt_state == MQTT_STATE_CONNECTED:
             self.mqttclient.publish(topic, payload)
 
+    def push(self, title, body):
+        p = {
+            "title": title,
+            "body": body
+        }
+        print(p)
+        jstr = json.dumps(p)
+        print(jstr)
+        self.publish('@push', jstr)
+
     def writeShadowField(self, field, value):
         def covertDotNotationToJSON(path, val):
             value = None
