@@ -35,7 +35,6 @@ class Microgear:
             self.shadowget_callbacks.clear()
 
     def mg_connected_cb(self, client, userdata, flags, rc):
-        print('rc', rc)
         if rc == 0:
             self.mqtt_state = MQTT_STATE_CONNECTED
 
@@ -93,7 +92,7 @@ class Microgear:
         if (self.mqtt_state) == MQTT_STATE_CONNECTED:
             return self.mqttclient.check_msg()
         elif (self.mqtt_state == MQTT_STATE_DISCONNECTED):
-            print("reconnected...")
+            # print("reconnected...")
             self.mqttclient.connect()
 
     def mqtttask(self):
@@ -125,9 +124,7 @@ class Microgear:
             "title": title,
             "body": body
         }
-        print(p)
         jstr = json.dumps(p)
-        print(jstr)
         self.publish('@push', jstr)
 
     def writeShadowField(self, field, value):
