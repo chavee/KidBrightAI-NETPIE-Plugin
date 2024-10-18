@@ -342,7 +342,7 @@ Blockly.defineBlocksWithJsonArray(
 
   {
     "type": "netpie_push",
-    "message0": "Mobile @push with title %1 and body: %2",
+    "message0": "Mobile @push with title: %1 and body: %2",
     "args0": [
       {
         "type": "field_input",
